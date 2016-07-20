@@ -39,4 +39,4 @@
         	<mapping class="org.pjaygroup.restfulapp2.model.User"/>
         </session-factory>
         
-</hibernate-configuration>  
+</hibernate-configuration>
