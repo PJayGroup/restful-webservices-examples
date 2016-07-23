@@ -25,6 +25,8 @@ import org.pjaygroup.restfulapp2.serviceimpl.EmployeeServiceImpl;
  * http://stackoverflow.com/questions/15618061/a-message-body-writer-for-java-class-java-util-arraylist-and-mime-media-type-t
  * http://stackoverflow.com/questions/19655184/no-compiler-is-provided-in-this-environment-perhaps-you-are-running-on-a-jre-ra
  * http://stackoverflow.com/questions/21096837/what-does-offending-class-tell-me-on-server-startup
+ * http://stackoverflow.com/questions/3566146/setting-property-source-to-org-eclipse-jst-jee-serverjsftut-did-not-find-a
+ * http://stackoverflow.com/questions/15601469/jar-not-loaded-see-servlet-spec-2-3-section-9-7-2-offending-class-javax-serv
  *
  */
 @Path("/employees")

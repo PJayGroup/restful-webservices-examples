@@ -2,7 +2,6 @@ package org.pjaygroup.restfulapp2.service;
 
 import java.util.List;
 
-import org.pjaygroup.restfulapp2.model.Login;
 import org.pjaygroup.restfulapp2.model.User;
 
 /**
@@ -21,5 +20,4 @@ public interface UserService {
 
 	boolean destroyUser(String user_id);
 
-	boolean doVerifyLogin(Login login);
 }

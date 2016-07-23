@@ -2,16 +2,12 @@ package org.pjaygroup.restfulapp2.daoimpl;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
 import org.pjaygroup.restfulapp2.dao.UserDao;
-import org.pjaygroup.restfulapp2.exceptions.UserExistsException;
-import org.pjaygroup.restfulapp2.model.Login;
+import org.pjaygroup.restfulapp2.exceptions.ResourceExistsException;
 import org.pjaygroup.restfulapp2.model.User;
 import org.pjaygroup.restfulapp2.utils.HibernateUtils;
 
@@ -75,7 +71,7 @@ public class UserDaoImpl implements UserDao{
 		User userFromDB = getUserByUserID(session, user.getUser_id());
 		if(null != userFromDB){
 			session.close();
-			throw new UserExistsException("User already present with user id " + user.getUser_id());
+			throw new ResourceExistsException("User already present with user id " + user.getUser_id());
 		}
 		Transaction transaction = session.beginTransaction();
 		try {
@@ -95,8 +91,11 @@ public class UserDaoImpl implements UserDao{
 	public boolean updateUser(User user) {
 		Session session = sessionFactory.openSession();
 		User userFromDB = getUserByUserID(session, user.getUser_id());
-		Transaction transaction = session.beginTransaction();
 		if(null != userFromDB){
+			// To solve the problem of not having or wrong id passed by user, we add the DB object id to user passed object before merge.
+			// If we don't wan to deal with id. The we can create custom generator id generator class to give string user objects
+			user.setId(userFromDB.getId());
+			Transaction transaction = session.beginTransaction();
 			try {
 				//session.save(user);
 				session.merge(user);
@@ -131,20 +130,6 @@ public class UserDaoImpl implements UserDao{
 				return false;
 			}
 		}
-		return false;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean doVerifyLogin(Login login) {
-		Session session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(User.class);
-		Criterion criterion_user_id = Restrictions.eq("user_id", login.getUser_id());
-		Criterion criterion_password = Restrictions.eq("password", login.getPassword());
-		Criterion criterion_user_and_pwd = Restrictions.and(criterion_user_id, criterion_password);
-		criteria.add(criterion_user_and_pwd);
-		List<User> userlst = criteria.list();
-		if(null != userlst && !userlst.isEmpty()){return true;}
 		return false;
 	}
 
