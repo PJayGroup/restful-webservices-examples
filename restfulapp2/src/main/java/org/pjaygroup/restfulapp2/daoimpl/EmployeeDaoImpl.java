@@ -64,6 +64,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		Session session = sessionFactory.openSession();
 		Employee employeeFromDB = session.get(Employee.class, employee.getEmp_id());
 		if(null != employeeFromDB){
+			// To solve the problem of not having or wrong id passed by user, we add the DB object id to user passed object before merge.
+			employee.setEmp_id(employeeFromDB.getEmp_id());
 			Transaction transaction = session.beginTransaction();
 			try{
 				//session.update(employee);

@@ -14,7 +14,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.pjaygroup.restfulapp2.exceptions.UserExistsException;
+import org.pjaygroup.restfulapp2.exceptions.ResourceExistsException;
 import org.pjaygroup.restfulapp2.model.Message;
 import org.pjaygroup.restfulapp2.model.User;
 import org.pjaygroup.restfulapp2.service.UserService;
@@ -27,8 +27,10 @@ import org.pjaygroup.restfulapp2.serviceimpl.UserServiceImpl;
  * https://github.com/FasterXML/jackson-databind/issues/935
  * http://stackoverflow.com/questions/19894955/spring-jsonignore-not-working
  * http://stackoverflow.com/questions/19655184/no-compiler-is-provided-in-this-environment-perhaps-you-are-running-on-a-jre-ra
- * http://stackoverflow.com/questions/21096837/what-does-offending-class-tell-me-on-server-startup
  * http://stackoverflow.com/questions/15618061/a-message-body-writer-for-java-class-java-util-arraylist-and-mime-media-type-t
+ * http://stackoverflow.com/questions/3566146/setting-property-source-to-org-eclipse-jst-jee-serverjsftut-did-not-find-a
+ * http://stackoverflow.com/questions/15601469/jar-not-loaded-see-servlet-spec-2-3-section-9-7-2-offending-class-javax-serv
+ * http://stackoverflow.com/questions/15989325/severe-error-configuring-application-listener-of-class-org-springframework-web
  *
  */
 @Path("/users")
@@ -75,7 +77,7 @@ public class UserController {
 				//return Response.status(Response.Status.CREATED).entity(user).build();
 				return Response.status(Response.Status.CREATED).entity(new Message("User created successfully")).build();
 			}
-		} catch (UserExistsException e) {
+		} catch (ResourceExistsException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message(e.getMessage())).build();
 		}

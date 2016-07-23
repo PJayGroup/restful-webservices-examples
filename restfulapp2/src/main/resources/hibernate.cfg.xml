@@ -37,6 +37,7 @@
         	<!-- Mapping with entity config xml "<mapping resource="path/*.xml"/>" or entity class -->
         	<mapping class="org.pjaygroup.restfulapp2.model.Employee"/>
         	<mapping class="org.pjaygroup.restfulapp2.model.User"/>
+        	<mapping class="org.pjaygroup.restfulapp2.model.Login"/>
         </session-factory>
         
 </hibernate-configuration>
