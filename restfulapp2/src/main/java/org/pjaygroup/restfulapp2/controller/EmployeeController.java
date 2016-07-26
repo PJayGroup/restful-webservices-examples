@@ -21,6 +21,9 @@ import org.pjaygroup.restfulapp2.serviceimpl.EmployeeServiceImpl;
 
 /**
  * @author Vijay Konduru
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples/helloworld-spring-webapp
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples/helloworld-spring-annotations
  * http://stackoverflow.com/questions/18122336/cannot-change-version-of-project-facet-dynamic-web-module-to-3-0
  * http://stackoverflow.com/questions/15618061/a-message-body-writer-for-java-class-java-util-arraylist-and-mime-media-type-t
  * http://stackoverflow.com/questions/19655184/no-compiler-is-provided-in-this-environment-perhaps-you-are-running-on-a-jre-ra
@@ -83,7 +86,7 @@ public class EmployeeController {
 		if(createsuccess){
 			return Response.status(Response.Status.CREATED).entity(new Message("Employee created successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("Employee creation failed")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("Employee creation failed")).build();
 	}
 	
 	@PUT
@@ -96,7 +99,7 @@ public class EmployeeController {
 		if(updatesuccess){
 			return Response.ok(new Message("Employee updated successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("Employee not updated")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("Employee not updated")).build();
 	}
 	
 	@DELETE
@@ -109,7 +112,7 @@ public class EmployeeController {
 		if(destroysuccess){
 			return Response.ok(new Message("Employee destroyed successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("Employee destruction failed")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("Employee destruction failed")).build();
 	}
 
 }

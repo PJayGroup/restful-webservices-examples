@@ -22,6 +22,9 @@ import org.pjaygroup.restfulapp2.serviceimpl.UserServiceImpl;
 
 /**
  * @author Vijay Konduru
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples/helloworld-spring-webapp
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples/helloworld-spring-annotations
  * http://stackoverflow.com/questions/18122336/cannot-change-version-of-project-facet-dynamic-web-module-to-3-0
  * http://stackoverflow.com/questions/12505141/only-using-jsonignore-during-serialization-but-not-deserialization
  * https://github.com/FasterXML/jackson-databind/issues/935
@@ -79,9 +82,9 @@ public class UserController {
 			}
 		} catch (ResourceExistsException e) {
 			e.printStackTrace();
-			return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message(e.getMessage())).build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(new Message(e.getMessage())).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("User creation failed")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("User creation failed")).build();
 	}
 	
 	@PUT
@@ -94,7 +97,7 @@ public class UserController {
 		if(userupdated){
 			return Response.ok(new Message("User updated successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("User not updated")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("User not updated")).build();
 	}
 	
 	@DELETE
@@ -106,7 +109,7 @@ public class UserController {
 		if(userdestroyed){
 			return Response.ok(new Message("User destroyed successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("User destruction failed")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("User destruction failed")).build();
 	}
 	
 }
