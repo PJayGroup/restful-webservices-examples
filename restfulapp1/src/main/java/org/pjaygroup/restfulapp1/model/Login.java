@@ -1,0 +1,56 @@
+package org.pjaygroup.restfulapp1.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * @author Vijay Konduru
+ *
+ */
+@Entity
+@Table(name = "login")
+@XmlRootElement(name = "login")
+public class Login {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	@Column(unique = true)
+	private String user_id;
+	private String password;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Login [id=" + id + ", user_id=" + user_id + ", password=" + password + "]";
+	}
+
+}
