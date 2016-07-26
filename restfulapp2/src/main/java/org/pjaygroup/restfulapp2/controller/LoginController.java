@@ -16,6 +16,9 @@ import org.pjaygroup.restfulapp2.serviceimpl.LoginServiceImpl;
 
 /**
  * @author Vijay Konduru
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples/helloworld-spring-webapp
+ * https://mvnrepository.com/artifact/org.glassfish.jersey.examples/helloworld-spring-annotations
  *
  */
 @Path("/login")
@@ -51,13 +54,13 @@ public class LoginController {
 			createsuccess = loginService.addLoginCredentials(login);
 		} catch (ResourceExistsException e) {
 			e.printStackTrace();
-			return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message(e.getMessage())).build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(new Message(e.getMessage())).build();
 		}
 		if(createsuccess){
 			//return Response.ok().build();
 			return Response.status(Response.Status.CREATED).entity(new Message("Login credentials created successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("Login credentials creation failed")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("Login credentials creation failed")).build();
 	}
 	
 	@PUT
@@ -70,7 +73,7 @@ public class LoginController {
 		if(updatesuccess){
 			return Response.status(Response.Status.CREATED).entity(new Message("Login credentials updated successfully")).build();
 		}
-		return Response.status(Response.Status.EXPECTATION_FAILED).entity(new Message("Login credentials update failed")).build();
+		return Response.status(Response.Status.BAD_REQUEST).entity(new Message("Login credentials update failed")).build();
 	}
 
 }
