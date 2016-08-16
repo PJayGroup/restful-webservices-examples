@@ -29,7 +29,10 @@ import org.springframework.stereotype.Component;
  * https://mvnrepository.com/artifact/com.sun.jersey.samples/simple-servlet
  * https://mvnrepository.com/artifact/com.sun.jersey.contribs
  * https://mvnrepository.com/artifact/com.sun.jersey.contribs/jersey-spring
+ * https://jersey.java.net/nonav/documentation/1.19.1/user-guide.html
+ * https://jersey.java.net/nonav/apidocs/1.9/contribs/jersey-spring/com/sun/jersey/spi/spring/container/servlet/package-summary.html
  * 
+ * http://javabeat.net/spring-jersey-integration-example/
  * https://dzone.com/articles/restful-web-applications
  * https://www.mkyong.com/webservices/jax-rs/jersey-spring-integration-example/
  *
