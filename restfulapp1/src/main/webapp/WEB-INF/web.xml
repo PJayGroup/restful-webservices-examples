@@ -11,8 +11,8 @@
   		<param-name>jersey.config.server.provider.packages</param-name>
   		<param-value>org.pjaygroup.restfulapp1.controller</param-value>
   	</init-param>
-  	<!-- With version 1.9.1 there is no need for "POJOMappingFeature" this is removed from jar. This works automatically - 
-  			"https://jersey.java.net/nonav/documentation/1.9.1/user-guide.html" or "https://jersey.java.net/nonav/documentation/1.9.1/user-guide.html#d4e903" -->
+  	<!-- With version 1.19.1 there is no need for "POJOMappingFeature" this is removed from jar. This works automatically - 
+  			"https://jersey.java.net/nonav/documentation/1.19.1/user-guide.html" or "https://jersey.java.net/nonav/documentation/1.19.1/user-guide.html#json.pojo.approach.section" -->
 <!--   	<init-param> -->
 <!--   		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name> -->
 <!--   		<param-value>true</param-value> -->
